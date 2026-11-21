@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tax-laws-interpreter
+    runtime: docker
+    dockerfilePath: ./Dockerfile.lite
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b

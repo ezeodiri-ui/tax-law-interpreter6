@@ -1,0 +1,10 @@
+# Small image for hosts with little memory (e.g. 512 MB free tiers). Uses the offline LSA retrieval.
+FROM python:3.12-slim
+WORKDIR /app
+COPY backend/requirements.txt backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
+COPY . .
+WORKDIR /app/backend
+ENV DENSE_BACKEND=lsa LLM_PROVIDER=groq LLM_MODEL=openai/gpt-oss-120b
+RUN python -m app.ingest.build_index
+CMD ["sh","-c","uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

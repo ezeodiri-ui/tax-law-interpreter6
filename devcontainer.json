@@ -1,0 +1,9 @@
+{
+  "name": "Tax Laws Interpreter",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "postCreateCommand": "pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r backend/requirements.txt sentence-transformers",
+  "postStartCommand": "bash scripts/codespace_start.sh",
+  "forwardPorts": [8000],
+  "portsAttributes": { "8000": { "label": "Tax Laws Interpreter", "onAutoForward": "openBrowser" } },
+  "hostRequirements": { "memory": "8gb" }
+}

@@ -1,0 +1,32 @@
+{"q": "What is the rate of VAT?", "expect": ["NTA-s148"]}
+{"q": "What is the development levy and at what rate is it charged?", "expect": ["NTA-s59"]}
+{"q": "What rate of tax do companies pay and are small companies treated differently?", "expect": ["NTA-s56"]}
+{"q": "What is the effective tax rate rule for companies?", "expect": ["NTA-s57"]}
+{"q": "What are the eligibility rules for economic development incentives?", "expect": ["NTA-s167"]}
+{"q": "What is the penalty for failure to register for tax?", "expect": ["NTAA-s100"]}
+{"q": "What is the penalty for failure to file returns?", "expect": ["NTAA-s101"]}
+{"q": "How is a Tax ID issued to a taxpayer?", "expect": ["NTAA-s7"]}
+{"q": "What happens when a taxpayer objects to an assessment?", "expect": ["NTAA-s41"]}
+{"q": "When does an assessment become final and conclusive?", "expect": ["NTAA-s43"]}
+{"q": "What books of account must a taxpayer keep?", "expect": ["NTAA-s31"]}
+{"q": "Who sits on the governing board of the Nigeria Revenue Service?", "expect": ["NRSEA-s7"]}
+{"q": "What percentage of revenue funds the Nigeria Revenue Service?", "expect": ["NRSEA-s22"]}
+{"q": "How does the Accountant-General recover unremitted revenue from an MDA?", "expect": ["NRSEA-s39", "NRSEA-schThird"]}
+{"q": "How many members does the Tax Appeal Tribunal have and what is its quorum?", "expect": ["JRBEA-s24"]}
+{"q": "Within how many days must an appeal be filed at the Tax Appeal Tribunal?", "expect": ["JRBEA-schSecond"]}
+{"q": "What is the Tax Ombud not allowed to do?", "expect": ["JRBEA-s43"]}
+{"q": "Who are the members of the Joint Revenue Board?", "expect": ["JRBEA-s4"]}
+{"q": "What are the functions of the Joint Revenue Board?", "expect": ["JRBEA-s5"]}
+{"q": "What is the stamp duty rate on a bill of exchange?", "expect": ["NTA-schNinth"]}
+{"q": "What does section 148 of the Nigeria Tax Act provide?", "expect": ["NTA-s148"]}
+{"q": "What does section 100 of the Tax Administration Act say?", "expect": ["NTAA-s100"]}
+{"q": "How is stamp duty defined?", "expect": ["NTAA-s147", "NTA-s202"]}
+{"q": "What are the income tax bands for individuals?", "expect": ["NTA-schFourth"]}
+{"q": "What are the rates of capital allowances?", "expect": ["NTA-schFirst"]}
+{"q": "How is the residence of a company determined?", "expect": ["NTA-schTwelfth", "NTA-s6"]}
+{"q": "Can the Minister of Finance direct the Revenue Service on a particular person's tax assessment?", "expect": ["NRSEA-s31"]}
+{"q": "What confidentiality duties bind Revenue Service staff?", "expect": ["NRSEA-s33", "NRSEA-s32"]}
+{"q": "Within what period can someone sue the Nigeria Revenue Service?", "expect": ["NRSEA-s35"]}
+{"q": "How long does the Tax Ombud have to investigate a complaint?", "expect": ["JRBEA-schThird"]}
+{"q": "What powers does the Office of the Tax Ombud have?", "expect": ["JRBEA-s41"]}
+{"q": "What royalty applies to petroleum?", "expect": ["NTA-schSeventh"]}

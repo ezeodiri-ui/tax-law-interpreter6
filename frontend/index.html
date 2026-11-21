@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tax Laws Interpreter – House Committee on Finance</title>
+<style>
+:root{--navy:#1F3864;--gold:#9C7A26;--bg:#f6f4ee;--ink:#1c2230;--mut:#6b7280;--card:#fff;--line:#e3dfd3;--ok:#1b7a3d;--warn:#b45309;--onnavy:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#10151f;--ink:#e8eaf0;--mut:#9aa3b2;--card:#171e2b;--line:#2a3345;--navy:#8fb0ee;--gold:#d4b25a;--onnavy:#10151f}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink)}
+header{background:#1F3864;color:#fff;padding:14px 22px;border-bottom:4px solid #9C7A26;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0}header small{opacity:.8;display:block;font-size:12px}
+.badges{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}.badge{font:11px system-ui;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,.15)}
+nav{display:flex;gap:2px;padding:0 22px;background:var(--card);border-bottom:1px solid var(--line)}
+nav button{font:600 13px system-ui;padding:11px 16px;border:0;background:none;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent}
+nav button.on{color:var(--navy);border-color:var(--gold)}
+main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;padding:18px 22px;max-width:1500px;margin:auto}
+@media(max-width:980px){main{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+h2{font:700 12px system-ui;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin:0 0 10px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{font:12px system-ui;border:1px solid var(--line);border-radius:14px;padding:4px 10px;background:none;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy);color:var(--onnavy);border-color:var(--navy)}
+.ask{display:flex;gap:8px}textarea{flex:1;resize:vertical;min-height:54px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:15px Georgia,serif}
+button.go{font:600 14px system-ui;background:var(--navy);color:var(--onnavy);border:0;border-radius:8px;padding:0 20px;cursor:pointer}
+button.go:disabled{opacity:.5}
+.ex{margin:10px 0 0;display:flex;flex-direction:column;gap:4px}.ex a{font:13px system-ui;color:var(--navy);cursor:pointer;text-decoration:underline dotted}
+.msg{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}.msg .q{font-weight:700;margin-bottom:8px}
+.ans p{margin:.5em 0}.ans ul{margin:.4em 0;padding-left:20px}
+.cite{font:600 11px system-ui;background:var(--gold);color:#fff;border-radius:4px;padding:1px 5px;margin:0 1px;cursor:pointer;vertical-align:1px}
+.ver{font:12px system-ui;margin-top:10px;padding:8px 10px;border-radius:6px;border:1px solid var(--line)}.ver.ok{border-color:var(--ok);color:var(--ok)}.ver.warn{border-color:var(--warn);color:var(--warn)}
+.src{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:6px;padding:10px 12px;margin-bottom:10px;background:var(--card)}
+.src.flash{box-shadow:0 0 0 3px var(--gold)}
+.src .h{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}.src .n{font:700 12px system-ui;background:var(--navy);color:var(--onnavy);border-radius:4px;padding:1px 7px}
+.src .t{font-weight:700}.src .m{font:11px system-ui;color:var(--mut)}.src .role{font:10px system-ui;text-transform:uppercase;color:var(--gold);letter-spacing:.06em}
+.src pre{white-space:pre-wrap;font:13px/1.5 Georgia,serif;margin:8px 0 0;max-height:150px;overflow:auto}.src.open pre{max-height:none}
+.src .tg{font:11px system-ui;color:var(--navy);cursor:pointer;margin-top:4px;display:inline-block}
+.sc{font:11px ui-monospace,monospace;color:var(--mut)}
+.trace{font:12px ui-monospace,monospace;color:var(--mut);margin-bottom:10px;word-break:break-word}
+.toc{max-height:70vh;overflow:auto;font:13px system-ui}.toc details{margin:2px 0}.toc summary{cursor:pointer;font-weight:700;padding:3px 0}
+.toc a{display:block;padding:2px 0 2px 14px;color:var(--ink);cursor:pointer}.toc a:hover{color:var(--gold)}
+.ch{font:11px system-ui;color:var(--mut);padding:6px 0 2px 6px;text-transform:uppercase}
+.hide{display:none}.notice{font:12px system-ui;color:var(--warn);margin:8px 0}
+.disc{font:11px system-ui;color:var(--mut);padding:0 22px 18px;max-width:1500px;margin:auto}
+</style></head><body>
+<header><div><h1>Statutory Interpretation Assistant – 2025 Tax Laws</h1><small>House of Representatives Committee on Finance · Demonstration</small></div>
+<div class="badges" id="badges"></div></header>
+<nav><button class="on" data-t="ask">Ask the law</button><button data-t="browse">Browse the Acts</button></nav>
+<main id="v-ask">
+ <section class="panel">
+  <h2>Question</h2>
+  <div class="chips" id="acts"></div>
+  <div class="ask"><textarea id="q" placeholder="e.g. What is the penalty for failure to register for tax?"></textarea><button class="go" id="go">Ask</button></div>
+  <div class="ex" id="ex"></div>
+  <div id="log"></div>
+ </section>
+ <section class="panel"><h2>Provisions retrieved</h2><div class="trace" id="trace">Sources appear here with their Act, section, and Gazette page.</div><div id="srcs"></div></section>
+</main>
+<main id="v-browse" class="hide">
+ <section class="panel"><h2>Arrangement of sections</h2><div class="toc" id="toc"></div></section>
+ <section class="panel"><h2>Provision text</h2><div id="prov">Select a section or schedule.</div></section>
+</main>
+<div class="disc">Answers explain what the text of the four 2025 Acts provides and cite the provisions relied on. They are not legal or tax advice. Always confirm against the Gazette.</div>
+<script>
+const ACTS={NTA:'Nigeria Tax Act',NTAA:'Tax Administration Act',NRSEA:'Revenue Service (Est.) Act',JRBEA:'Joint Revenue Board (Est.) Act'};
+const EXAMPLES=['What is the penalty for failure to register for tax?','What is the rate of VAT?','What happens if a taxpayer objects to an assessment?','Who sits on the governing board of the Nigeria Revenue Service?','How does the Accountant-General recover unremitted revenue from an MDA?','What is the stamp duty on a bill of exchange?','What can the Tax Ombud not do?'];
+let sel=new Set(),busy=false;
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('#acts').innerHTML='<span style="font:12px system-ui;color:var(--mut);align-self:center">Restrict to:</span>'+Object.entries(ACTS).map(([k,v])=>`<button class="chip" data-a="${k}">${v}</button>`).join('');
+$('#acts').onclick=e=>{const a=e.target.dataset.a;if(!a)return;sel.has(a)?sel.delete(a):sel.add(a);e.target.classList.toggle('on')};
+$('#ex').innerHTML=EXAMPLES.map(x=>`<a>${esc(x)}</a>`).join('');
+$('#ex').onclick=e=>{if(e.target.tagName=='A'){$('#q').value=e.target.textContent;ask()}};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));$('#v-ask').classList.toggle('hide',b.dataset.t!='ask');$('#v-browse').classList.toggle('hide',b.dataset.t!='browse');if(b.dataset.t=='browse')loadToc()});
+fetch('/api/health').then(r=>r.json()).then(h=>{$('#badges').innerHTML=[`${h.chunks} indexed provisions`,`retrieval: BM25 + ${h.dense_backend=='none'?'keyword only':h.dense_backend+' vectors'}${h.reranker?' + reranker':''}`,h.llm?'answers: '+h.llm_name:'answers: retrieval-only'].map(t=>`<span class="badge">${t}</span>`).join('')});
+function md(t){t=esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\[(\d{1,2})\]/g,'<span class="cite" data-n="$1">$1</span>');
+ let out='',ul=false;for(const l of t.split('\n')){if(/^\s*[-*] /.test(l)){if(!ul){out+='<ul>';ul=true}out+='<li>'+l.replace(/^\s*[-*] /,'')+'</li>'}else{if(ul){out+='</ul>';ul=false}if(l.trim())out+='<p>'+l+'</p>'}}return out+(ul?'</ul>':'')}
+function srcCard(s){const loc=esc(s.label)+(s.sub?` · ${esc(s.sub)}`:'');
+ return `<div class="src" id="src-${s.n}"><div class="h"><span class="n">${s.n}</span><span class="t">${esc(s.act_title)} — ${loc}</span><span class="role">${esc(s.role||'')}</span></div><div class="m">${esc(s.title)}${s.gaz?' · Gazette p. '+esc(s.gaz):''}${s.chapter?' · '+esc(s.chapter):''}</div><pre>${esc(s.text)}</pre><span class="tg">expand full text</span></div>`}
+document.addEventListener('click',e=>{const c=e.target;
+ if(c.classList.contains('cite')){const el=$('#src-'+c.dataset.n);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1400)}}
+ if(c.classList.contains('tg')){const p=c.parentNode;p.classList.toggle('open');c.textContent=p.classList.contains('open')?'collapse':'expand full text'}});
+$('#go').onclick=ask;$('#q').addEventListener('keydown',e=>{if(e.key=='Enter'&&(e.ctrlKey||e.metaKey))ask()});
+async function ask(){const q=$('#q').value.trim();if(!q||busy)return;busy=true;$('#go').disabled=true;
+ const m=document.createElement('div');m.className='msg';m.innerHTML=`<div class="q">${esc(q)}</div><div class="ans"></div><div class="vb"></div>`;$('#log').prepend(m);
+ const ans=m.querySelector('.ans'),vb=m.querySelector('.vb');let txt='';
+ try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:q,acts:[...sel]})});
+  const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
+  while(true){const {done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});let i;
+   while((i=buf.indexOf('\n\n'))>=0){const line=buf.slice(0,i);buf=buf.slice(i+2);if(!line.startsWith('data: '))continue;const ev=JSON.parse(line.slice(6));
+    if(ev.type=='sources'){$('#srcs').innerHTML=ev.sources.map(srcCard).join('');const t=ev.trace;$('#trace').textContent=`acts detected: ${t.acts_detected.join(', ')||'none'} · hints: ${(t.act_hints||[]).join(', ')||'none'}`+(t.explicit.sections.length?` · cited sections: ${t.explicit.sections.join(', ')}`:'')+(t.expanded?' · query expanded with statutory terms':'')+` · dense: ${t.backend}`}
+    else if(ev.type=='token'){txt+=ev.text;ans.innerHTML=md(txt)}
+    else if(ev.type=='notice'){ans.innerHTML=`<div class="notice">${esc(ev.text)}</div>`}
+    else if(ev.type=='error'){ans.innerHTML+=`<div class="notice">${esc(ev.text)}</div>`}
+    else if(ev.type=='done'&&ev.verification){const v=ev.verification,iss=[];
+     if(v.invalid_citations.length)iss.push('invalid citation numbers: '+v.invalid_citations.join(', '));
+     if(v.unverified_quotes.length)iss.push(v.unverified_quotes.length+' quotation(s) not found verbatim in the sources');
+     if(v.unsupported_figures.length)iss.push('figures not found in sources: '+v.unsupported_figures.join(', '));
+     if(v.uncited)iss.push('no citations');
+     vb.innerHTML=iss.length?`<div class="ver warn">⚠ Automated check: ${esc(iss.join(' · '))}. Verify against the cited provisions.</div>`:`<div class="ver ok">✓ Automated check passed: ${v.citations_used.length} sources cited; quotations and figures found in the retrieved text.</div>`}}}
+ }catch(err){ans.innerHTML=`<div class="notice">${esc(err)}</div>`}
+ busy=false;$('#go').disabled=false}
+let tocLoaded=false;
+async function loadToc(){if(tocLoaded)return;tocLoaded=true;const toc=await (await fetch('/api/toc')).json();let h='';
+ for(const [k,v] of Object.entries(ACTS)){const items=toc.filter(t=>t.act==k);let last='';h+=`<details><summary>${v} (${items.length})</summary>`;
+  for(const t of items){const c=t.chapter||t.part;if(c!==last&&t.type=='section'){h+=`<div class="ch">${esc(c.slice(0,90))}</div>`;last=c}
+   h+=`<a data-a="${k}" data-k="${t.type}" data-r="${t.number}">${t.type=='section'?t.number+'. ':t.number+' Schedule — '}${esc(t.title)}</a>`}h+='</details>'}
+ $('#toc').innerHTML=h;
+ $('#toc').onclick=async e=>{const d=e.target.dataset;if(!d.a)return;const r=await fetch(`/api/provision/${d.a}/${d.k}/${d.r}`);const j=await r.json();
+  $('#prov').innerHTML=j.chunks.map(c=>`<div class="src"><div class="h"><span class="t">${esc(c.act_title)} — ${esc(c.label)}${c.sub?' · '+esc(c.sub):''}</span></div><div class="m">${esc(c.title)}${c.gaz?' · Gazette p. '+esc(c.gaz):''}</div><pre style="max-height:none">${esc(c.text)}</pre></div>`).join('')}}
+</script></body></html>

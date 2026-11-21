@@ -1,0 +1,11 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pymupdf>=1.24
+numpy>=1.26
+scikit-learn>=1.4
+anthropic>=0.40
+httpx>=0.27
+pydantic>=2.6
+# Recommended for best retrieval (see README):
+# sentence-transformers>=3.0     # DENSE_BACKEND=st and/or RERANK_MODEL
+# voyageai>=0.3                  # DENSE_BACKEND=voyage (voyage-law-2)
